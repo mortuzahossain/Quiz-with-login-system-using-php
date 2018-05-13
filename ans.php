@@ -28,8 +28,10 @@ $q4 = $_POST['q4'];
 $q5 = $_POST['q5'];
 
 
+
 // SQL FOR GETING RIGHT ANS AND ALL THE INFO FOR SHOWING THE ANS
-$sql = "SELECT id,question,a,b,c,d,ans FROM quiz WHERE id in ($q1,$q2,$q3,$q4,$q5)";
+
+$sql = "SELECT id,question,a,b,c,d,ans FROM quiz WHERE id in ($q1,$q2,$q3,$q4,$q5) ORDER BY CASE id when $q1 then 1 when $q2 then 2 when $q3 then 3 when $q4 then 4 when $q5 then 5 end";
 
 $result = mysqli_query($con,$sql);
 while ($row = mysqli_fetch_assoc($result)) {
