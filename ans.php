@@ -27,12 +27,6 @@ $q3 = $_POST['q3'];
 $q4 = $_POST['q4'];
 $q5 = $_POST['q5'];
 
-// User Ans 
-$q1_answers = $_POST['q1_answers'];
-$q2_answers = $_POST['q2_answers'];
-$q3_answers = $_POST['q3_answers'];
-$q4_answers = $_POST['q4_answers'];
-$q5_answers = $_POST['q5_answers'];
 
 // SQL FOR GETING RIGHT ANS AND ALL THE INFO FOR SHOWING THE ANS
 $sql = "SELECT id,question,a,b,c,d,ans FROM quiz WHERE id in ($q1,$q2,$q3,$q4,$q5)";
@@ -42,18 +36,18 @@ while ($row = mysqli_fetch_assoc($result)) {
     $questions[] = $row;
 }
 
-// Check The Array With The Ans in the database
+// Check The Ans For right and wrong
 $i = 0;
 $right_ans = 0;
+// Counting the right ans
 foreach ($questions as $question) {
     $i = $i + 1;
     $name = 'q'.$i.'_answers';
-    // echo $name;
     if ( ! strcasecmp($question['ans'],  $_POST[$name]) ) {
         $right_ans = $right_ans + 1;
     }
 }
-
+// Counting the wrong ans
 $wrong_ans = 5 - $right_ans;
 
 ?>
@@ -62,7 +56,7 @@ $wrong_ans = 5 - $right_ans;
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Project || Index Page</title>
+	<title>Project || Answer Page</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
@@ -85,6 +79,11 @@ $wrong_ans = 5 - $right_ans;
         <h1>Right Ans : <?php echo $right_ans; ?></h1>
         <h1>Wrong Ans : <?php echo $wrong_ans; ?></h1>
     </div>
+
+    <hr>
+    <div class="container text-center">
+        <h2>Check The Correct Answer If You Needed . </h2>
+    </div>    
     <hr>
 
     <div class="container">

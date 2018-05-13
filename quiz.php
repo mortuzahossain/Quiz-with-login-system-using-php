@@ -52,7 +52,7 @@ if ( !isset($_GET['l']) || !isset($_GET['t']) || !isset($_GET['c'])) {
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Project || Index Page</title>
+	<title>Project || Quiz Page</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
